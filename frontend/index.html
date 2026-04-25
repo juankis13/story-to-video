@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story to Video - Convierte historias en videos</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="10" fill="url(#grad)"/>
+                        <path d="M16 12L28 20L16 28V12Z" fill="white"/>
+                        <defs>
+                            <linearGradient id="grad" x1="0" y1="0" x2="40" y2="40">
+                                <stop stop-color="#e94560"/>
+                                <stop offset="1" stop-color="#0f3460"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">Story<span class="logo-accent">2</span>Video</span>
+                </div>
+                <nav class="nav">
+                    <a href="#create" class="nav-link active">Crear Video</a>
+                    <a href="#how" class="nav-link">Cómo Funciona</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Convierte tus <span class="gradient-text">historias reales</span><br>
+                    en videos profesionales
+                </h1>
+                <p class="hero-subtitle">
+                    Escribe tu historia, elige el formato y obtén un video listo
+                    para YouTube, Facebook o Instagram en minutos.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Form -->
+        <main class="main" id="create">
+            <div class="container">
+                <form id="storyForm" class="story-form">
+                    <div class="form-grid">
+                        <!-- Left: Story Input -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <span class="section-number">1</span>
+                                Tu Historia
+                            </h2>
+
+                            <div class="form-group">
+                                <label for="title" class="label">Título de la Historia</label>
+                                <input type="text" id="title" name="title" class="input"
+                                    placeholder="Ej: El día que cambió mi vida"
+                                    required maxlength="200">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="author" class="label">Autor</label>
+                                <input type="text" id="author" name="author" class="input"
+                                    placeholder="Tu nombre o 'Anónimo'"
+                                    value="Anónimo" maxlength="100">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content" class="label">
+                                    Contenido de la Historia
+                                    <span class="char-count" id="charCount">0 / 50,000</span>
+                                </label>
+                                <textarea id="content" name="content" class="textarea"
+                                    placeholder="Escribe aquí tu historia real. Puedes usar varios párrafos para separar las escenas del video..."
+                                    required minlength="10" maxlength="50000" rows="12"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Right: Settings -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <span class="section-number">2</span>
+                                Configuración
+                            </h2>
+
+                            <div class="form-group">
+                                <label class="label">Formato del Video</label>
+                                <div class="format-options">
+                                    <label class="format-option active">
+                                        <input type="radio" name="video_format" value="youtube" checked>
+                                        <div class="format-card">
+                                            <div class="format-preview youtube-preview"></div>
+                                            <span class="format-name">YouTube</span>
+                                            <span class="format-desc">16:9 Horizontal</span>
+                                        </div>
+                                    </label>
+                                    <label class="format-option">
+                                        <input type="radio" name="video_format" value="facebook">
+                                        <div class="format-card">
+                                            <div class="format-preview facebook-preview"></div>
+                                            <span class="format-name">Facebook</span>
+                                            <span class="format-desc">1:1 Cuadrado</span>
+                                        </div>
+                                    </label>
+                                    <label class="format-option">
+                                        <input type="radio" name="video_format" value="shorts">
+                                        <div class="format-card">
+                                            <div class="format-preview shorts-preview"></div>
+                                            <span class="format-name">Shorts/Reels</span>
+                                            <span class="format-desc">9:16 Vertical</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="language" class="label">Idioma de Narración</label>
+                                <select id="language" name="language" class="input select">
+                                    <option value="es" selected>Español</option>
+                                    <option value="en">English</option>
+                                    <option value="pt">Português</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="it">Italiano</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">Colores del Video</label>
+                                <div class="color-pickers">
+                                    <div class="color-group">
+                                        <label for="bgColor">Fondo</label>
+                                        <input type="color" id="bgColor" name="bg_color" value="#1a1a2e" class="color-input">
+                                    </div>
+                                    <div class="color-group">
+                                        <label for="textColor">Texto</label>
+                                        <input type="color" id="textColor" name="text_color" value="#ffffff" class="color-input">
+                                    </div>
+                                    <div class="color-group">
+                                        <label for="accentColor">Acento</label>
+                                        <input type="color" id="accentColor" name="accent_color" value="#e94560" class="color-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preview Card -->
+                            <div class="preview-card" id="previewCard">
+                                <div class="preview-header">Vista Previa</div>
+                                <div class="preview-body" id="previewBody">
+                                    <div class="preview-bar" id="previewBar"></div>
+                                    <p class="preview-text" id="previewText">Tu historia aparecerá aquí...</p>
+                                    <div class="preview-dots">
+                                        <span class="dot" id="dot1"></span>
+                                        <span class="dot" id="dot2"></span>
+                                        <span class="dot" id="dot3"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="submit-section">
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            Generar Video
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Progress Section -->
+                <div class="progress-section hidden" id="progressSection">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3 class="progress-title" id="progressTitle">Generando tu video...</h3>
+                            <span class="progress-badge" id="progressBadge">En proceso</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-message" id="progressMessage">Preparando...</p>
+                        <div class="progress-percent" id="progressPercent">0%</div>
+
+                        <!-- Video Result -->
+                        <div class="video-result hidden" id="videoResult">
+                            <video id="videoPlayer" controls class="video-player"></video>
+                            <div class="video-actions">
+                                <a id="downloadLink" href="#" class="btn-primary download-btn">
+                                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Descargar Video
+                                </a>
+                                <button class="btn-secondary" id="newVideoBtn">
+                                    Crear Otro Video
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Error display -->
+                        <div class="error-message hidden" id="errorMessage">
+                            <p id="errorText"></p>
+                            <button class="btn-secondary" id="retryBtn">Intentar de nuevo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- How it works -->
+        <section class="how-section" id="how">
+            <div class="container">
+                <h2 class="section-main-title">Cómo Funciona</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </div>
+                        <h3>1. Escribe</h3>
+                        <p>Escribe o pega tu historia real. Puede ser una experiencia personal, un testimonio o cualquier relato.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
+                        <h3>2. Configura</h3>
+                        <p>Elige el formato (YouTube, Facebook, Shorts), idioma de narración y colores personalizados.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                        <h3>3. Genera</h3>
+                        <p>El sistema genera automáticamente narración con voz, slides visuales y los compone en un video profesional.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </div>
+                        <h3>4. Descarga</h3>
+                        <p>Descarga tu video y súbelo directamente a YouTube, Facebook, Instagram o cualquier red social.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Story2Video. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
