@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 import os
 import uuid
+from collections.abc import Callable
 from pathlib import Path
 
 from gtts import gTTS
@@ -135,7 +138,7 @@ def generate_video(
     bg_color: str = "#1a1a2e",
     text_color: str = "#ffffff",
     accent_color: str = "#e94560",
-    progress_callback: callable | None = None,  # type: ignore[type-arg]
+    progress_callback: Callable | None = None,
 ) -> dict:
     """Generate a complete video from a story."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
