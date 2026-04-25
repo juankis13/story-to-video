@@ -242,6 +242,7 @@ def generate_video(
         preset="medium",
         threads=2,
         logger=None,
+        ffmpeg_params=["-pix_fmt", "yuv420p"],
     )
 
     video_duration = final_video.duration
